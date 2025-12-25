@@ -1,0 +1,276 @@
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark scroll-pt-20 md:scroll-pt-24">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/photos/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Prachi kumari | Software Engineer Portfolio" />
+    <title>Prachi. | Full-Stack Developer</title>
+    
+    <!-- Theme Initialization Script (Blocking to prevent flash) -->
+    <script>
+      (function() {
+        const theme = localStorage.getItem('theme');
+        // Default to dark if no preference is set
+        if (theme === 'light') {
+          document.documentElement.classList.remove('dark');
+        } else {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'system-ui', 'sans-serif'],
+              display: ['Montserrat', 'Inter', 'sans-serif'],
+            },
+            colors: {
+              onyx: '#050505',
+              surface: '#0d0d0d',
+              accent: {
+                DEFAULT: '#6366f1',
+                light: '#818cf8',
+                dark: '#4f46e5',
+              },
+              studio: '#0a0a0a',
+            },
+            transitionTimingFunction: {
+              'expo': 'cubic-bezier(0.19, 1, 0.22, 1)',
+            },
+            animation: {
+              'spin-slow': 'spin 8s linear infinite',
+              'bounce-slow': 'bounce 3s infinite',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap');
+      
+      /* Global smooth transitions for theme switching */
+      *, *::before, *::after {
+        transition-property: background-color, border-color, color, fill, stroke, box-shadow, opacity;
+        transition-duration: 500ms;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #ffffff;
+        color: #0f172a;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+
+      .dark body {
+        background-color: #050505;
+        color: #f8fafc;
+      }
+
+      /* Custom Selection */
+      ::selection {
+        background: #6366f1;
+        color: #ffffff;
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .dark ::-webkit-scrollbar-track {
+        background: #050505;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 10px;
+      }
+      .dark ::-webkit-scrollbar-thumb {
+        background: #1a1a1a;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #6366f1;
+      }
+
+      /* Custom Cursor Styles */
+      .custom-cursor {
+        width: 20px;
+        height: 20px;
+        background-color: rgba(99, 102, 241, 0.3);
+        border: 1px solid rgba(99, 102, 241, 0.5);
+        border-radius: 50%;
+        position: fixed;
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        transition: width 0.3s, height 0.3s, background-color 0.3s, left 0.05s ease-out, top 0.05s ease-out;
+        backdrop-filter: blur(2px);
+      }
+      .custom-cursor.active {
+        width: 50px;
+        height: 50px;
+        background-color: rgba(99, 102, 241, 0.1);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+      }
+      .dark .custom-cursor.active {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      
+      @media (max-width: 1024px) {
+        .custom-cursor { display: none; }
+      }
+
+      /* Base Reveal Animation */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+        will-change: transform, opacity;
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .reveal-slide-up { transform: translateY(60px); }
+      .reveal-zoom { transform: scale(0.95); }
+      .reveal-slide-left { transform: translateX(-40px); }
+      .reveal-slide-right { transform: translateX(40px); }
+      
+      .reveal-zoom.active, .reveal-slide-left.active, .reveal-slide-right.active {
+        transform: translate(0) scale(1);
+      }
+
+      /* Loading State */
+      #loader {
+        position: fixed;
+        inset: 0;
+        background: #ffffff;
+        z-index: 10000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 0.8s ease-in-out;
+      }
+      .dark #loader {
+        background: #050505;
+      }
+      #loader.fade-out {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      /* Marquee Animation */
+      .marquee-wrapper {
+        display: flex;
+        overflow: hidden;
+        user-select: none;
+        gap: 2rem;
+      }
+      .marquee-content {
+        flex-shrink: 0;
+        display: flex;
+        justify-content: space-around;
+        gap: 2rem;
+        min-width: 100%;
+        animation: scroll 40s linear infinite;
+      }
+      @keyframes scroll {
+        from { transform: translateX(0); }
+        to { transform: translateX(-100%); }
+      }
+
+      /* Mobile Safe Areas */
+      @supports(padding: max(0px)) {
+        .safe-pb { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
+      }
+    </style>
+    <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@18.2.0",
+        "react-dom/": "https://esm.sh/react-dom@18.2.0/",
+        "react/": "https://esm.sh/react@18.2.0/",
+        "react-router-dom": "https://esm.sh/react-router-dom@6.22.3?deps=react@18.2.0,react-dom@18.2.0",
+        "@google/genai": "https://esm.sh/@google/genai@^1.33.0",
+        "lucide-react": "https://esm.sh/lucide-react@0.344.0?deps=react@18.2.0",
+        "@emailjs/browser": "https://esm.sh/@emailjs/browser@4.1.0"
+      }
+    }
+    </script>
+  <link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="loader">
+      <div class="flex flex-col items-center">
+        <div class="text-slate-900 dark:text-white text-2xl font-black tracking-[0.5em] mb-4">PRACHI.</div>
+        <div class="w-48 h-[1px] bg-black/10 dark:bg-white/10 relative overflow-hidden">
+          <div class="absolute inset-0 bg-accent w-0 animate-loading-bar"></div>
+        </div>
+      </div>
+    </div>
+    <div id="root"></div>
+    <div class="custom-cursor" id="cursor"></div>
+    
+    <style>
+      @keyframes loading-bar {
+        0% { width: 0%; left: -100%; }
+        50% { width: 50%; left: 0%; }
+        100% { width: 100%; left: 100%; }
+      }
+      .animate-loading-bar {
+        animation: loading-bar 1.5s ease-in-out infinite;
+      }
+    </style>
+
+    <script>
+      // Cursor logic
+      const cursor = document.getElementById('cursor');
+      document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+      });
+
+      document.addEventListener('mouseover', (e) => {
+        if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON' || e.target.closest('a') || e.target.closest('button')) {
+          cursor.classList.add('active');
+        } else {
+          cursor.classList.remove('active');
+        }
+      });
+
+      // Intersection Observer
+      const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('active');
+        });
+      }, observerOptions);
+
+      document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        // Hide loader
+        setTimeout(() => {
+          document.getElementById('loader').classList.add('fade-out');
+        }, 1200);
+      });
+
+      const mutationObserver = new MutationObserver(() => {
+        document.querySelectorAll('.reveal:not(.active)').forEach(el => observer.observe(el));
+      });
+      mutationObserver.observe(document.body, { childList: true, subtree: true });
+    </script>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
