@@ -37,7 +37,7 @@ const Hero: React.FC = () => {
     <section 
       id="home"
       ref={containerRef}
-      className="relative min-h-screen pt-28 md:pt-32 lg:pt-0 pb-12 lg:pb-16 px-6 md:px-12 w-full flex flex-col justify-center overflow-hidden bg-white dark:bg-onyx select-none"
+      className="relative min-h-screen pt-16 md:pt-20 px-6 md:px-12 w-full flex items-center overflow-hidden bg-white dark:bg-onyx select-none"
     >
       {/* Parallax Background Blobs */}
       <div 
