@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
           {[
             { name: 'GITHUB', url: 'https://github.com/Prachikumari8' },
             { name: 'LINKEDIN', url: 'https://www.linkedin.com/in/prachi-kumari-31213b344' },
-            { name: 'RESUME', url: '/resume.pdf' }
+            { name: 'RESUME', url: '/Resume.pdf' }
           ].map((link, i) => (
             <a 
               key={i} 

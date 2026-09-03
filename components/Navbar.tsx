@@ -123,7 +123,7 @@ const Navbar: React.FC = () => {
             <div className="h-4 w-[1px] bg-black/5 dark:bg-white/10 mx-1"></div>
             <ThemeSwitch isDark={isDark} toggle={toggleTheme} />
             <a 
-              href="/resume.pdf" 
+              href="/Resume.pdf" 
               target="_blank"
               className="flex items-center gap-2 px-4 py-1.5 border border-black/10 dark:border-white/10 text-slate-900 dark:text-white text-[9px] font-black tracking-[0.2em] rounded-full hover:bg-slate-900 dark:hover:bg-white hover:text-white dark:hover:text-black transition-all active:scale-95 shadow-sm dark:shadow-none"
             >
@@ -163,7 +163,7 @@ const Navbar: React.FC = () => {
            ))}
            <div className="w-10 h-[1px] bg-black/10 dark:bg-white/10"></div>
            <a 
-             href="/resume.pdf" 
+             href="/Resume.pdf" 
              target="_blank"
              onClick={closeMenu}
              className="flex items-center gap-3 px-8 py-4 bg-accent text-white rounded-full text-[11px] font-black tracking-widest shadow-xl shadow-accent/20 active:scale-95"

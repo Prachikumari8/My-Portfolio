@@ -81,7 +81,7 @@ const Contact: React.FC = () => {
               
               <div className="group relative inline-block reveal reveal-zoom delay-200 w-full sm:w-auto mb-6">
                 <a 
-                  href="/resume.pdf" 
+                  href="/Resume.pdf" 
                   target="_blank"
                   className="relative z-10 flex items-center gap-3 xl:gap-4 px-5 xl:px-6 py-3.5 xl:py-4 bg-slate-50 dark:bg-surface border border-black/5 dark:border-white/10 rounded-[1.25rem] xl:rounded-[1.5rem] hover:border-accent/40 transition-all duration-500 shadow-sm"
                 >
